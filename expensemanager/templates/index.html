@@ -1,0 +1,91 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+
+{% block navbar %}
+                  
+{% endblock navbar %}
+{% block sidebar %}
+    
+{% endblock sidebar %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "feature" %}">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "about" %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "contact" %}">Contact</a>
+        </li>
+        <!-- Add other navbar items as needed -->
+      </ul>
+      <!-- Move Sign In and Sign Up buttons here -->
+      <!-- Example split danger button -->
+      {% if request.user.is_authenticated %}
+      <div class="d-flex align-items-center">
+        <a href="{% url "expense_dashboard" %}" class="btn btn-primary mx-2">{{ request.user }}</a>
+      </div>
+      
+      
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+<main class="main-content">
+  <div class="container-fluid">
+      <div class="row justify-content-center align-items-center vh-100">
+          <div class="col-md-8">
+              <div class="row">
+                  <div class="col-md-6">
+                      <h1 class="display-4 mb-4">Welcome to Your Expense Manager</h1>
+                      <p class="lead">Effortlessly track your expenses and manage your budget with our user-friendly platform.</p>
+                      <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-3">Sign In</a>
+                      <a href="{% url 'expense_register' %}" class="btn btn-outline-primary btn-lg">Sign Up</a>
+                  </div>
+                  <div class="col-md-6">
+                      <img src="https://source.unsplash.com/500x280/?budget" alt="Expense Manager" class="img-fluid">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <section class="py-5 bg-light">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                  <h2>Track Your Expenses</h2>
+                  <p>Effortlessly record and categorize your expenses to gain insights into your spending habits.</p>
+              </div>
+              <div class="col-md-6">
+                  <h2>Manage Your Budget</h2>
+                  <p>Set budgets for different categories and receive alerts when you're approaching your limits.</p>
+              </div>
+          </div>
+          <div class="row mt-4">
+              <div class="col-md-6">
+                  <h2>Multiple Accounts</h2>
+                  <p>Manage multiple accounts and currencies in one centralized platform.</p>
+              </div>
+              <div class="col-md-6">
+                  <h2>Generate Reports</h2>
+                  <p>Generate detailed reports to analyze your spending patterns and make informed financial decisions.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+</main>
+{% endblock content %}
+
+
